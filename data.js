@@ -1,0 +1,86 @@
+window.DASH_DATA = {
+  "updatedAt": "2026-08-04T19:28:09.452+08:00",
+  "weather": {
+    "ok": true,
+    "description": "Haze",
+    "iconKey": "cloudy",
+    "tempC": 39,
+    "feelsLikeC": 47,
+    "humidity": 44,
+    "windKph": 13,
+    "windDir": "北偏西风",
+    "place": "Barr Dubayy",
+    "observedAt": "2026-08-04T19:09:12.613+08:00",
+    "fetchedAt": "2026-08-04T19:28:09.452+08:00",
+    "error": null
+  },
+  "quote": {
+    "text": "长风破浪会有时，直挂云帆济沧海。",
+    "source": "李白《行路难》"
+  },
+  "sources": {
+    "claude": {
+      "ok": true,
+      "label": "Claude",
+      "windows": [
+        {
+          "name": "5小时",
+          "usedPct": 5,
+          "resetAt": "2026-08-05T00:00:00.302+08:00"
+        },
+        {
+          "name": "7天",
+          "usedPct": 13,
+          "resetAt": "2026-08-09T17:00:00.303+08:00"
+        }
+      ],
+      "fetchedAt": "2026-08-04T19:28:07.967+08:00",
+      "error": null
+    },
+    "codex": {
+      "ok": true,
+      "label": "Codex",
+      "windows": [
+        {
+          "name": "周",
+          "usedPct": 100,
+          "resetAt": "2026-08-08T12:20:39.000+08:00"
+        }
+      ],
+      "fetchedAt": "2026-08-04T19:28:07.996+08:00",
+      "error": null
+    },
+    "kimi": {
+      "ok": false,
+      "label": "Kimi",
+      "windows": [],
+      "fetchedAt": "2026-08-04T19:28:08.000+08:00",
+      "error": "未启用",
+      "disabled": true
+    },
+    "google": {
+      "ok": true,
+      "label": "Gemini",
+      "windows": [
+        {
+          "name": "每日",
+          "usedPct": 0,
+          "resetAt": "2026-08-05T15:00:00.000+08:00",
+          "displayValue": "45 次"
+        }
+      ],
+      "fetchedAt": "2026-08-04T19:28:08.000+08:00",
+      "error": null
+    },
+    "deepseek": {
+      "ok": false,
+      "label": "DeepSeek",
+      "balance": null,
+      "currency": "CNY",
+      "detail": null,
+      "fetchedAt": "2026-08-04T19:28:08.019+08:00",
+      "error": "未启用",
+      "disabled": true
+    }
+  }
+};

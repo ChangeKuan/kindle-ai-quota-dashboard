@@ -153,6 +153,24 @@
     ui.attribute(ui.find('batFill'), 'width', Math.round(18 * percent / 100));
   }
 
+  // 页面是照 600×800 排的，但 PW5 这类机器是 1072×1448。整页等比放大，
+  // 比重排一套断点稳：布局、字号、行距的相对关系全都不动。
+  function fitViewport() {
+    var body = doc.body;
+    var scale = Math.min(
+      (win.innerWidth || 600) / 600,
+      (win.innerHeight || 800) / 800
+    );
+    var value;
+    if (!isFinite(scale) || scale <= 0 || Math.abs(scale - 1) < 0.02) return;
+    value = 'scale(' + scale + ')';
+    ui.style(body, 'transformOrigin', 'top left');
+    ui.style(body, 'WebkitTransformOrigin', 'top left');
+    ui.style(body, 'transform', value);
+    ui.style(body, 'WebkitTransform', value);
+    ui.style(body, 'marginLeft', Math.max(0, ((win.innerWidth || 600) - 600 * scale) / 2) + 'px');
+  }
+
   function attachScript(url, onSuccess, onFailure) {
     var script = doc.createElement('script');
     script.async = true;
@@ -177,6 +195,7 @@
     if (/5小时|5H/i.test(name)) return '5H QUOTA';
     if (/7天|周|WEEK/i.test(name)) return 'WEEKLY';
     if (/月|MONTH/i.test(name)) return 'MONTHLY';
+    if (/每日|日|DAILY/i.test(name)) return 'DAILY';
     return name || 'QUOTA';
   }
 
@@ -315,7 +334,7 @@
       updateWeather(data.weather);
       updateQuotaCard('cardClaude', data.sources.claude);
       updateQuotaCard('cardCodex', data.sources.codex);
-      updateQuotaCard('cardKimi', data.sources.kimi);
+      updateQuotaCard('cardGoogle', data.sources.google);
       updateBalance(data.sources.deepseek);
       updateQuote(data.quote);
       relativeNode = ui.find('relTime');
@@ -391,6 +410,7 @@
   }
 
   present(win.DASH_DATA);
+  fitViewport();
   updateClock();
   updateBattery();
   if (!isQuiet()) refresh();
